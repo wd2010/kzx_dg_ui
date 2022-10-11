@@ -4,7 +4,7 @@ import { InboxOutlined } from '@ant-design/icons-vue';
 import { message, Modal } from 'ant-design-vue';
 import { useStorage } from '@vueuse/core'
 
-const fileList = ref([])
+const fileList = ref([{uid: ''}])
 const isLoading = ref(false)
 
 const userInfo = useStorage('userInfo', {
