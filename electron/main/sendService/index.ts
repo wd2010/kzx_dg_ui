@@ -6,6 +6,7 @@ import {v4 as uuidV4} from 'uuid'
 export const sendService = async (filePath, fileName, author) => {
   const pkgPath = path.join(process.cwd(), './tmp/package.json')
   const tmpPath = path.join(process.cwd(), './tmp')
+  const npmrcPath = path.join(process.cwd(), './tmp/.npmrc')
 
   try {
 
@@ -26,10 +27,15 @@ export const sendService = async (filePath, fileName, author) => {
         "description": "${fileName}"
       }
     `
+    const npmrcData = `registry=https://registry.npmjs.org/
+home=https://www.npmjs.org
+//registry.npmjs.org/:_authToken=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
+    `
     await fs.writeFileSync(pkgPath, pkgData)
     await fs.copyFileSync(filePath, path.join(tmpPath, fileName))
   
     console.log('npm publish ...')
+    await fs.writeFileSync(npmrcPath, npmrcData)
     await runCommand('cd tmp && npm publish')
     console.log('publish finished')
     await fs.rmSync(tmpPath, { recursive: true, force: true })

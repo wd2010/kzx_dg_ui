@@ -6,7 +6,7 @@
 
   <a-modal v-model:visible="visible" title="修改用户名" @ok="handleOk">
 
-    <a-input v-model:value="userId" />
+    <a-input v-model:value="userId" placeholder="请输入用户名，便于后续查找包，类似 zhangsan_kzx" />
   </a-modal>
 </template>
 
