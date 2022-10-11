@@ -13,7 +13,6 @@ declare module '@vue/runtime-core' {
     AModal: typeof import('ant-design-vue/es')['Modal']
     ASpin: typeof import('ant-design-vue/es')['Spin']
     AUploadDragger: typeof import('ant-design-vue/es')['UploadDragger']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Upload: typeof import('./src/components/upload.vue')['default']
     UserInfo: typeof import('./src/components/userInfo.vue')['default']
   }

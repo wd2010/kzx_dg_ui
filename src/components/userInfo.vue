@@ -19,9 +19,7 @@
   import upload from './upload.vue';
 
   const visible = ref(false)
-  const userInfo = useStorage('userInfo', {
-    author: '' 
-  })
+  const userInfo = useStorage('userInfo', { author: '' })
   const userId = ref(userInfo.value.author)
 
   onMounted(() => {

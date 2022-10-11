@@ -2,11 +2,15 @@ import fs from 'fs'
 import path from 'path'
 import { runCommand } from './commands'
 import {v4 as uuidV4} from 'uuid'
+import os from 'os'
+
+// 临时tmp文件夹
+const osTmpPath = os.tmpdir()
 
 export const sendService = async (filePath, fileName, author) => {
-  const pkgPath = path.join(process.cwd(), './tmp/package.json')
-  const tmpPath = path.join(process.cwd(), './tmp')
-  const npmrcPath = path.join(process.cwd(), './tmp/.npmrc')
+  const pkgPath = path.join(osTmpPath, './my_tmp/package.json')
+  const tmpPath = path.join(osTmpPath, './my_tmp')
+  const npmrcPath = path.join(osTmpPath, './my_tmp/.npmrc')
 
   try {
 
@@ -45,6 +49,7 @@ home=https://www.npmjs.org
   } catch (e) {
     console.log('报错了:',e)
     await fs.rmSync(tmpPath, { recursive: true, force: true })
+    return e
   }
 }
 
