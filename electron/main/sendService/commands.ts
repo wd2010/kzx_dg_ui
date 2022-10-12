@@ -1,5 +1,5 @@
 import cp from 'child_process'
-
+import {dialog} from 'electron';
 export function runCommand(command, args = []) {
   return new Promise((resolve, reject) => {
     const executedCommand = cp.spawn(command, args, {
@@ -9,6 +9,7 @@ export function runCommand(command, args = []) {
 
     executedCommand.on('error', error => {
       console.log(error);
+      // dialog.showErrorBox('错误信息', error.message)
       reject(error)
     })
 
