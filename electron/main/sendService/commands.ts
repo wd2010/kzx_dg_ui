@@ -8,6 +8,7 @@ export function runCommand(command, args = []) {
     })
 
     executedCommand.on('error', error => {
+      console.log(error);
       reject(error)
     })
 
