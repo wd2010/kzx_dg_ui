@@ -40,7 +40,7 @@ home=https://www.npmjs.org
   
     console.log('npm publish ...')
     await fs.writeFileSync(npmrcPath, npmrcData)
-    await runCommand('cd tmp && npm publish')
+    await runCommand(`cd ${tmpPath} && npm publish`)
     console.log('publish finished')
     await fs.rmSync(tmpPath, { recursive: true, force: true })
     console.log(`包: kzx_${repoName} 发布成功`)
