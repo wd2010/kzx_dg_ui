@@ -41,6 +41,7 @@
     "@vueuse/electron": "^9.3.0",
     "ant-design-vue": "^3.2.13",
     "unplugin-vue-components": "^0.22.8",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "npm": "^8.19.2"
   }
 }
