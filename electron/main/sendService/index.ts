@@ -33,7 +33,7 @@ export const sendService = async (filePath, fileName, author) => {
     `
     const npmrcData = `registry=https://registry.npmjs.org/
 home=https://www.npmjs.org
-//registry.npmjs.org/:_authToken=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
+//registry.npmjs.org/:_authToken=you_npm_authtoken
     `
     await fs.writeFileSync(pkgPath, pkgData)
     await fs.copyFileSync(filePath, path.join(tmpPath, fileName))
