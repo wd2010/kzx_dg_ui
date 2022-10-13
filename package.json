@@ -40,8 +40,10 @@
     "@vueuse/core": "^9.3.0",
     "@vueuse/electron": "^9.3.0",
     "ant-design-vue": "^3.2.13",
+    "electron-log": "^4.4.8",
+    "electron-root-path": "^1.1.0",
+    "npm": "^8.19.2",
     "unplugin-vue-components": "^0.22.8",
-    "uuid": "^9.0.0",
-    "npm": "^8.19.2"
+    "uuid": "^9.0.0"
   }
 }

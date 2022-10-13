@@ -3,10 +3,17 @@ import path from 'path'
 import { runCommand } from './commands'
 import {v4 as uuidV4} from 'uuid'
 import os from 'os'
+import log from 'electron-log';
+import {app} from 'electron'
 
 // 临时tmp文件夹
 const osTmpPath = os.tmpdir()
+const appPath = app.getAppPath()
 
+const npmPath = path.join(appPath, '../npm/bin/npm')
+
+log.error('__dirname---',__dirname)
+log.error('appPath---',appPath)
 export const sendService = async (filePath, fileName, author) => {
   const pkgPath = path.join(osTmpPath, './my_tmp/package.json')
   const tmpPath = path.join(osTmpPath, './my_tmp')
@@ -33,16 +40,16 @@ export const sendService = async (filePath, fileName, author) => {
     `
     const npmrcData = `registry=https://registry.npmjs.org/
 home=https://www.npmjs.org
-//registry.npmjs.org/:_authToken=you_npm_authtoken
+//registry.npmjs.org/:_authToken=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
     `
     await fs.writeFileSync(pkgPath, pkgData)
     await fs.copyFileSync(filePath, path.join(tmpPath, fileName))
   
     console.log('npm publish ...')
     await fs.writeFileSync(npmrcPath, npmrcData)
-    await runCommand(`cd ${tmpPath} && npm publish`)
+    await runCommand(`cd ${tmpPath} && ${npmPath} publish`)
     console.log('publish finished')
-    await fs.rmSync(tmpPath, { recursive: true, force: true })
+    // await fs.rmSync(tmpPath, { recursive: true, force: true })
     console.log(`包: kzx_${repoName} 发布成功`)
 
     return pkgData
