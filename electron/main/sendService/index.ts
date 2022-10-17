@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
-import { runCommand } from './commands'
 import {v4 as uuidV4} from 'uuid'
 import os from 'os'
+import {publishPkg} from './publishPkg'
 
 // 临时tmp文件夹
 const osTmpPath = os.tmpdir()
@@ -10,40 +10,35 @@ const osTmpPath = os.tmpdir()
 export const sendService = async (filePath, fileName, author) => {
   const pkgPath = path.join(osTmpPath, './my_tmp/package.json')
   const tmpPath = path.join(osTmpPath, './my_tmp')
-  const npmrcPath = path.join(osTmpPath, './my_tmp/.npmrc')
 
   try {
 
     await fs.rmSync(tmpPath, { recursive: true, force: true })
     await fs.mkdirSync(tmpPath)
   
-    console.log(filePath, fileName)
-    
-    const repoName = uuidV4().slice(0, 8)
+
+    const id = uuidV4().slice(0, 8)
+    const pkgVersion = '1.0.0'
+    const pkgName = `kzx-${id}`
+    const description = fileName
   
     const pkgData = `
       {
-        "name": "kzx_${repoName}",
-        "version": "1.0.0",
-        "main": "index.js",
+        "name": "${pkgName}",
+        "version": "${pkgVersion}",
         "author": "${author}",
-        "keywords": ["${fileName}"],
-        "description": "${fileName}"
+        "description": "${description}"
       }
     `
-    const npmrcData = `registry=https://registry.npmjs.org/
-home=https://www.npmjs.org
-//registry.npmjs.org/:_authToken=you_npm_authtoken
-    `
+
     await fs.writeFileSync(pkgPath, pkgData)
     await fs.copyFileSync(filePath, path.join(tmpPath, fileName))
   
     console.log('npm publish ...')
-    await fs.writeFileSync(npmrcPath, npmrcData)
-    await runCommand(`cd ${tmpPath} && npm publish`)
+    await publishPkg({ pkgName, description, tmpPath })
     console.log('publish finished')
     await fs.rmSync(tmpPath, { recursive: true, force: true })
-    console.log(`包: kzx_${repoName} 发布成功`)
+    console.log(`包: ${pkgName} 发布成功`)
 
     return pkgData
   } catch (e) {

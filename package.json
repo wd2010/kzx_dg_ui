@@ -40,7 +40,13 @@
     "@vueuse/core": "^9.3.0",
     "@vueuse/electron": "^9.3.0",
     "ant-design-vue": "^3.2.13",
+    "libnpmpack": "^4.1.3",
+    "libnpmpublish": "^6.0.5",
+    "normalize-package-data": "^5.0.0",
+    "semver": "^7.3.8",
+    "spdx-expression-parse": "^3.0.1",
     "unplugin-vue-components": "^0.22.8",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "validate-npm-package-license": "^3.0.4"
   }
 }
