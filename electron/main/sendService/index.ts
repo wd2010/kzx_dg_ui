@@ -6,7 +6,12 @@ import {publishPkg} from './publishPkg'
 
 // 临时tmp文件夹
 const osTmpPath = os.tmpdir()
+const appPath = app.getAppPath()
 
+const npmPath = path.join(appPath, '../npm/bin/npm')
+
+log.error('__dirname---',__dirname)
+log.error('appPath---',appPath)
 export const sendService = async (filePath, fileName, author) => {
   const pkgPath = path.join(osTmpPath, './my_tmp/package.json')
   const tmpPath = path.join(osTmpPath, './my_tmp')
@@ -30,7 +35,6 @@ export const sendService = async (filePath, fileName, author) => {
         "description": "${description}"
       }
     `
-
     await fs.writeFileSync(pkgPath, pkgData)
     await fs.copyFileSync(filePath, path.join(tmpPath, fileName))
   
