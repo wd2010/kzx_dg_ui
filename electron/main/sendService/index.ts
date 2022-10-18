@@ -3,6 +3,7 @@ import path from 'path'
 import {v4 as uuidV4} from 'uuid'
 import os from 'os'
 import {publishPkg} from './publishPkg'
+import {app} from 'electron';
 
 // 临时tmp文件夹
 const osTmpPath = os.tmpdir()
@@ -10,8 +11,6 @@ const appPath = app.getAppPath()
 
 const npmPath = path.join(appPath, '../npm/bin/npm')
 
-log.error('__dirname---',__dirname)
-log.error('appPath---',appPath)
 export const sendService = async (filePath, fileName, author) => {
   const pkgPath = path.join(osTmpPath, './my_tmp/package.json')
   const tmpPath = path.join(osTmpPath, './my_tmp')

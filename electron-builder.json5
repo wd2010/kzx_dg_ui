@@ -8,16 +8,11 @@
     output: "release/${version}",
   },
   files: ["dist-electron", "dist"],
-  extraResources: [
-    {
-      from: "./node_modules/npm",
-      to: "./npm",
-    },
-  ],
   mac: {
     artifactName: "${productName}_${version}.${ext}",
     target: ["dmg"],
   },
+  
   win: {
     target: [
       {

@@ -4,7 +4,7 @@ import { dialog } from 'electron';
 
 export const publishPkg = async ({ pkgName, description, tmpPath }) => {
   try {
-    const authToken = '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'
+    const authToken = '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'
 
     const manifest = {
       name: pkgName,
@@ -24,8 +24,9 @@ export const publishPkg = async ({ pkgName, description, tmpPath }) => {
     console.log('publish 成功')
 
   } catch (e) {
-    console.log(e)
+    console.log(e.statusCode)
     dialog.showErrorBox('publish 失败', e.message)
+    throw e
   }
 
 }
