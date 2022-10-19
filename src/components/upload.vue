@@ -18,9 +18,10 @@ const beforeUpload = async (file: any) => {
   isLoading.value = true;
 
   const userInfo = useStorage('userInfo', {
-    author: ''
+    author: '',
+    authToken: ''
   })
-  const result = await (window as any).ipc.receiveFile(file.path, file.name, userInfo.value.author)
+  const result = await (window as any).ipc.receiveFile(file.path, file.name, userInfo.value.author, userInfo.value.authToken)
   isLoading.value = false
 
   if (result instanceof Error) {

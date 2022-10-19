@@ -2,8 +2,8 @@ const { contextBridge, ipcRenderer } = require('electron')
 
 
 contextBridge.exposeInMainWorld('ipc', {
-  async receiveFile(filePath, fileName, author) {
-    return await ipcRenderer.invoke('onreceiveFile', filePath, fileName, author)
+  async receiveFile(filePath, fileName, author, authToken) {
+    return await ipcRenderer.invoke('onreceiveFile', filePath, fileName, author, authToken)
   },
 })
 

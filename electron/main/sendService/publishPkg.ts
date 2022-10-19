@@ -2,10 +2,9 @@ import { publish } from "libnpmpublish";
 import pack from "libnpmpack";
 import { dialog } from 'electron';
 
-export const publishPkg = async ({ pkgName, description, tmpPath, author }) => {
+export const publishPkg = async ({ pkgName, description, tmpPath, author, authToken }) => {
   try {
-    const authToken = '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'
-
+  
     const manifest = {
       name: pkgName,
       version: '1.0.0',
@@ -13,11 +12,10 @@ export const publishPkg = async ({ pkgName, description, tmpPath, author }) => {
       author,
     };
 
-    console.log(author);
 
     const tarData = await pack(tmpPath, {});
 
-    const result = await publish(manifest, tarData, {
+    await publish(manifest, tarData, {
       forceAuth: {
         token: authToken
       }
@@ -26,8 +24,11 @@ export const publishPkg = async ({ pkgName, description, tmpPath, author }) => {
     console.log('publish 成功')
 
   } catch (e) {
-    console.log(e.statusCode)
-    dialog.showErrorBox('publish 失败', e.message)
+    if (e.statusCode && e.statusCode === 404) {
+      dialog.showErrorBox('publish 失败: npm authToken 已失效,请更换', e.message)
+    } else {
+      dialog.showErrorBox('publish 失败: 网络异常', e.message)
+    }
     throw e
   }
 

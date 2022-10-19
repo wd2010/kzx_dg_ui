@@ -116,7 +116,7 @@ ipcMain.handle('open-win', (event, arg) => {
 })
 
 
-ipcMain.handle('onreceiveFile', async (event, filePath, fileName, author) => {
-  return await sendService(filePath, fileName, author)
+ipcMain.handle('onreceiveFile', async (event, filePath, fileName, author, authToken) => {
+  return await sendService(filePath, fileName, author, authToken)
 })
 
