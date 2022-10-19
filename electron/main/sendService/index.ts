@@ -38,7 +38,7 @@ export const sendService = async (filePath, fileName, author) => {
     await fs.copyFileSync(filePath, path.join(tmpPath, fileName))
   
     console.log('npm publish ...')
-    await publishPkg({ pkgName, description, tmpPath })
+    await publishPkg({ pkgName, description, tmpPath, author })
     console.log('publish finished')
     await fs.rmSync(tmpPath, { recursive: true, force: true })
     console.log(`包: ${pkgName} 发布成功`)

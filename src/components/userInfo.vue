@@ -1,5 +1,5 @@
 <template>
-  <a-card :title="userInfo.author" style="width: 300px">
+  <a-card :title="userInfo.author" style="width: 600px">
     <template #extra><a-button @click="visible = true">更改用户</a-button></template>
     <upload />
   </a-card>
@@ -42,3 +42,15 @@
 
 
 </script>
+
+<style scoped>
+:deep(.ant-upload-drag) {
+  height: 250px !important;
+}
+
+:deep(.ant-upload-btn) {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+</style>

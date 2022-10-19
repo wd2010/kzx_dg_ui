@@ -2,7 +2,7 @@ import { publish } from "libnpmpublish";
 import pack from "libnpmpack";
 import { dialog } from 'electron';
 
-export const publishPkg = async ({ pkgName, description, tmpPath }) => {
+export const publishPkg = async ({ pkgName, description, tmpPath, author }) => {
   try {
     const authToken = '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'
 
@@ -10,8 +10,10 @@ export const publishPkg = async ({ pkgName, description, tmpPath }) => {
       name: pkgName,
       version: '1.0.0',
       description,
+      author,
     };
 
+    console.log(author);
 
     const tarData = await pack(tmpPath, {});
 
