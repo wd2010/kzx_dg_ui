@@ -473,12 +473,12 @@
     "@vueuse/shared" "9.3.1"
     vue-demi "*"
 
-"@vueuse/electron@^9.3.0":
-  version "9.3.1"
-  resolved "https://registry.yarnpkg.com/@vueuse/electron/-/electron-9.3.1.tgz#268de87c2b68af86fac6822758be6b8e8069c843"
-  integrity sha512-LGixrpaQZWVIuyPlr0sQkoeqHOAo0UM9Rb90rKcwx3bsXkdeAygMRSL/43ZYxCivxPiFSOaESy++uu8HOHDmGQ==
+"@vueuse/electron@^9.9.0":
+  version "9.9.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/electron/-/electron-9.9.0.tgz#eab7988a34535704c42e4fa148bdf7899a1e3948"
+  integrity sha512-vpqoKKSU/0r4CuJo/QYJdzOXWPiFw3akNwcJ01Sk0qzl/tNEYl8jLZ02TnPuimtnwGGVU62s9/BYGPcSZmG+jA==
   dependencies:
-    "@vueuse/shared" "9.3.1"
+    "@vueuse/shared" "9.9.0"
     vue-demi "*"
 
 "@vueuse/metadata@9.3.1":
@@ -490,6 +490,13 @@
   version "9.3.1"
   resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-9.3.1.tgz#78c6cf41d8b75f05460e18a80819bf8164b597a5"
   integrity sha512-YFu3qcnVeu0S2L4XdQJtBpDcjz6xwqHZtTv/XRhu66/yge1XVhxskUcc7VZbX52xF9A34V6KCfwncP9YDqYFiw==
+  dependencies:
+    vue-demi "*"
+
+"@vueuse/shared@9.9.0":
+  version "9.9.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-9.9.0.tgz#3f02e6a86d9c789c3dd73308bd3adea958860086"
+  integrity sha512-+D0XFwHG0T+uaIbCSlROBwm1wzs71B7n3KyDOxnvfEMMHDOzl09rYKwaE2AENmYwYPXfHPbSBRDD2gBVHbvTcg==
   dependencies:
     vue-demi "*"
 
